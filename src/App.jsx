@@ -1,35 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { PostProvider } from "./contexts/PostContext";
+import NewPostForm from "./components/NewPostForm";
+import PostList from "./components/PostList";
+import EditModal from "./components/EditModal";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <PostProvider>
+      <div className="App">
+        <div className="Header">
+          <h1>Program</h1>
+          <h2>(Create, Read, Update, dan Delete)</h2>
+        </div>
+        <NewPostForm />
+        <PostList />
+        <EditModal />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </PostProvider>
+  );
 }
 
-export default App
+export default App;
